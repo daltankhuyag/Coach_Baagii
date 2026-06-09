@@ -1,0 +1,9 @@
+{
+  "name": "coach-baagii-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static site server for the Coach Baagii website.",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

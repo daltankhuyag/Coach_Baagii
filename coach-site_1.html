@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coach Baagii Boldmaa — Folkstyle Wrestling</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#10151c;
+    --slate:#1d2731;
+    --paper:#f5f6f7;
+    --line:#d7dce0;
+    --gold:#e8a019;
+    --steel:#3a6ea5;
+    --muted:#5d6973;
+    --maxw:1080px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.cond{font-family:'Barlow Condensed',sans-serif;letter-spacing:.01em;line-height:1.02}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  a{color:inherit;text-decoration:none}
+
+  /* nav */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(16,21,28,.96);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid #232c36;
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+  .brand{font-family:'Barlow Condensed';font-weight:800;font-size:1.35rem;color:#fff;text-transform:uppercase;letter-spacing:.04em}
+  .brand span{color:var(--gold)}
+  .navlinks{display:flex;gap:26px}
+  .navlinks a{color:#c3ccd4;font-size:.82rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;transition:color .2s}
+  .navlinks a:hover{color:var(--gold)}
+  .navcta{background:var(--gold);color:var(--ink)!important;padding:9px 16px;border-radius:4px;font-size:.78rem!important}
+  @media(max-width:680px){.navlinks a:not(.navcta){display:none}}
+
+  /* hero */
+  header.hero{
+    background:
+      linear-gradient(180deg,rgba(16,21,28,.74),rgba(16,21,28,.9)),
+      url('public/02.jpg') center/cover no-repeat;
+    color:#fff;
+    padding:96px 0 84px;
+    border-bottom:4px solid var(--gold);
+    position:relative;overflow:hidden;
+  }
+  .eyebrow{font-family:'Barlow Condensed';font-weight:700;text-transform:uppercase;letter-spacing:.28em;font-size:.82rem;color:var(--gold)}
+  header.hero h1{
+    font-weight:800;text-transform:uppercase;
+    font-size:clamp(3rem,9vw,6.4rem);
+    margin:.12em 0 .18em;color:#fff;
+  }
+  header.hero h1 em{font-style:normal;color:var(--gold);display:block}
+  .lede{font-size:1.15rem;max-width:540px;color:#cdd4db}
+  .herostats{display:flex;gap:40px;margin-top:44px;flex-wrap:wrap}
+  .herostats .n{font-family:'Barlow Condensed';font-weight:800;font-size:2.6rem;color:#fff;line-height:1}
+  .herostats .l{font-size:.74rem;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-top:4px}
+  .herostats .n em{color:var(--gold);font-style:normal}
+
+  /* sections */
+  section{padding:78px 0}
+  .sectlabel{font-family:'Barlow Condensed';font-weight:700;text-transform:uppercase;letter-spacing:.2em;font-size:.82rem;color:var(--steel);margin-bottom:10px}
+  h2{font-weight:800;text-transform:uppercase;font-size:clamp(2rem,5vw,3rem);margin-bottom:14px}
+  .lead{font-size:1.08rem;color:var(--muted);max-width:620px;margin-bottom:38px}
+
+  /* about */
+  .about{display:grid;grid-template-columns:1.1fr 1fr;gap:54px;align-items:center}
+  .about p{margin-bottom:16px}
+  .portrait{
+    aspect-ratio:4/5;border-radius:10px;
+    background:linear-gradient(160deg,var(--slate),#2c3a47);
+    display:flex;align-items:flex-end;padding:22px;
+    border:1px solid var(--line);position:relative;overflow:hidden;
+  }
+  .portrait::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(232,160,25,.06) 0 24px,transparent 24px 48px)}
+  .portrait .tag{position:relative;background:var(--gold);color:var(--ink);font-family:'Barlow Condensed';font-weight:800;text-transform:uppercase;font-size:1.1rem;padding:6px 14px;border-radius:4px;z-index:2}
+  .portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;z-index:1}
+  @media(max-width:760px){.about{grid-template-columns:1fr;gap:32px}.portrait{max-width:340px}}
+
+  /* programs */
+  .programs{background:var(--ink);color:#fff}
+  .programs .sectlabel{color:var(--gold)}
+  .programs h2{color:#fff}
+  .pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .card{
+    background:#171f29;border:1px solid #283341;border-radius:10px;padding:28px 24px;
+    transition:transform .2s,border-color .2s;
+  }
+  .card:hover{transform:translateY(-4px);border-color:var(--gold)}
+  .card .num{font-family:'Barlow Condensed';font-weight:700;color:var(--gold);font-size:.85rem;letter-spacing:.1em}
+  .card h3{font-weight:700;text-transform:uppercase;font-size:1.5rem;margin:8px 0 10px;color:#fff}
+  .card p{color:#9aa5b1;font-size:.95rem;margin-bottom:16px}
+  .card .meta{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--steel);font-weight:600}
+  @media(max-width:760px){.pgrid{grid-template-columns:1fr}}
+
+  /* creds */
+  .creds{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  .cred{display:flex;gap:16px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:8px;padding:20px 22px}
+  .cred .yr{font-family:'Barlow Condensed';font-weight:800;font-size:1.6rem;color:var(--steel);min-width:64px;line-height:1}
+  .cred h4{font-family:'Barlow Condensed';font-weight:700;font-size:1.15rem;text-transform:uppercase}
+  .cred p{font-size:.9rem;color:var(--muted)}
+  @media(max-width:620px){.creds{grid-template-columns:1fr}}
+
+  /* booking */
+  .book{background:var(--steel);color:#fff;border-radius:14px;padding:54px 48px;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+  .book h2{color:#fff}
+  .book p{color:#dce6f1;margin-bottom:0}
+  .ratebox{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:10px;padding:26px}
+  .rateline{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.14);font-size:.95rem}
+  .rateline:last-child{border:0}
+  .rateline b{font-family:'Barlow Condensed';font-weight:700;font-size:1.25rem}
+  .btn{display:inline-block;background:var(--gold);color:var(--ink);font-family:'Barlow Condensed';font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:1.05rem;padding:14px 30px;border-radius:6px;margin-top:22px;transition:transform .15s}
+  .btn:hover{transform:translateY(-2px)}
+  @media(max-width:720px){.book{grid-template-columns:1fr;padding:36px 26px}}
+
+  /* gallery slider */
+  .gallery{background:var(--ink);color:#fff}
+  .gallery .sectlabel{color:var(--gold)}
+  .gallery h2{color:#fff}
+  .slider{position:relative;border-radius:12px;overflow:hidden;border:1px solid #283341;background:#0c1117}
+  .track{display:flex;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+  .slide{min-width:100%;aspect-ratio:16/9;position:relative;display:flex;align-items:flex-end}
+  .slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center}
+  .slide.ph{background:repeating-linear-gradient(135deg,#171f29 0 30px,#10151c 30px 60px);align-items:center;justify-content:center}
+  .slide.ph span{font-family:'Barlow Condensed';font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#3a4654;font-size:1.1rem}
+  .caption{position:relative;z-index:2;width:100%;padding:20px 24px;background:linear-gradient(0deg,rgba(8,11,15,.85),transparent);font-family:'Barlow Condensed';font-weight:600;text-transform:uppercase;letter-spacing:.06em;font-size:1.05rem}
+  .arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:46px;height:46px;border-radius:50%;border:0;background:rgba(232,160,25,.92);color:var(--ink);font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+  .arrow:hover{background:var(--gold)}
+  .arrow.prev{left:16px}.arrow.next{right:16px}
+  .dots{display:flex;gap:10px;justify-content:center;margin-top:22px}
+  .dots button{width:11px;height:11px;border-radius:50%;border:0;background:#2c3a47;cursor:pointer;padding:0;transition:background .2s,transform .2s}
+  .dots button.active{background:var(--gold);transform:scale(1.25)}
+  @media(max-width:620px){.arrow{width:38px;height:38px;font-size:1.2rem}}
+
+  /* footer */
+  footer{background:var(--ink);color:#8a95a0;padding:50px 0;text-align:center;border-top:4px solid var(--gold)}
+  footer .brand{display:inline-block;margin-bottom:10px}
+  footer a{color:var(--gold)}
+  .fcontact{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;margin:14px 0;font-size:.9rem}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">Coach <span>Baagii</span></div>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#programs">Programs</a>
+      <a href="#creds">Record</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#book" class="navcta">Book a Session</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">3× NAIA National Champion · Doane University</p>
+    <h1>Baagii<em>Boldmaa</em></h1>
+    <p class="lede">From Ulaanbaatar to the top of the NAIA — a three-time national champion at 141 lbs who went 116–3 and rode a 100-match win streak. Now coaching the next generation of folkstyle wrestlers.</p>
+    <div class="herostats">
+      <div><div class="n">3<em>×</em></div><div class="l">NAIA National Champion</div></div>
+      <div><div class="n">100</div><div class="l">Match Win Streak</div></div>
+      <div><div class="n">116<em>–3</em></div><div class="l">Career Record at Doane</div></div>
+      <div><div class="n">5<em>×</em></div><div class="l">Collegiate All-American</div></div>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap about">
+    <div>
+      <p class="sectlabel">The Coach</p>
+      <h2>Baterdene "Baagii" Boldmaa</h2>
+      <p>Originally from Ulaanbaatar, Mongolia, I built one of the most dominant careers in NAIA history at Doane University — three national titles at 141 pounds, a 116–3 overall record, and a 100-match winning streak that ran undefeated for more than three years.</p>
+      <p>Before Doane, I wrestled at Northwest Kansas Technical College, where I was a two-time NJCAA national champion. Across both programs I earned five collegiate All-American honors. In March 2025, I was inducted into the Doane Athletics Hall of Fame.</p>
+      <p>I coach the way I trained: fundamentals first, relentless position, and the kind of conditioning that wins the third period. Whether you're a first-year youth wrestler or a varsity starter chasing a state berth, my job is to make the hard work pay off — and to keep the room demanding but positive.</p>
+    </div>
+    <div class="portrait"><img src="public/main page -01.jpg" alt="Coach Baagii Boldmaa holding the 2020 NAIA National Championship trophy"><span class="tag">3× NAIA National Champion</span></div>
+  </div>
+</section>
+
+<section id="programs" class="programs">
+  <div class="wrap">
+    <p class="sectlabel">Train With Me</p>
+    <h2>Programs</h2>
+    <div class="pgrid">
+      <div class="card">
+        <div class="num">/ 01</div>
+        <h3>Youth Club</h3>
+        <p>Ages 6–13. Introduces stance, motion, and the core folkstyle positions in a high-energy, encouraging room that builds confidence and toughness.</p>
+        <div class="meta">Tue &amp; Thu · 6–7:30 PM</div>
+      </div>
+      <div class="card">
+        <div class="num">/ 02</div>
+        <h3>Scholastic Squad</h3>
+        <p>Middle &amp; high school. Live wrestling, situational drilling, and match strategy for competitors aiming at districts, regionals, and state.</p>
+        <div class="meta">Mon · Wed · Fri · 5–7 PM</div>
+      </div>
+      <div class="card">
+        <div class="num">/ 03</div>
+        <h3>Private Sessions</h3>
+        <p>One-on-one or small-group work tailored to your wrestler's weaknesses — top game, takedown entries, or pre-tournament tune-ups.</p>
+        <div class="meta">By appointment</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="creds">
+  <div class="wrap">
+    <p class="sectlabel">Track Record</p>
+    <h2>Credentials &amp; Results</h2>
+    <p class="lead">A college career that ranks among the most decorated in NAIA wrestling history.</p>
+    <div class="creds">
+      <div class="cred"><div class="yr">3×</div><div><h4>NAIA National Champion</h4><p>Won three national titles at 141 lbs for Doane (2020, 2021, 2022).</p></div></div>
+      <div class="cred"><div class="yr">100</div><div><h4>Match Win Streak</h4><p>Undefeated in a Doane singlet for over three years — a 116–3 career record.</p></div></div>
+      <div class="cred"><div class="yr">'22</div><div><h4>NAIA Wrestler of the Year</h4><p>Plus NAIA Wrestler of the Championship Meet in 2020 and 2022.</p></div></div>
+      <div class="cred"><div class="yr">3×</div><div><h4>GPAC Wrestler of the Year</h4><p>The only GPAC wrestler to win the conference honor three times.</p></div></div>
+      <div class="cred"><div class="yr">5×</div><div><h4>Collegiate All-American</h4><p>Including two NJCAA national titles at Northwest Kansas Technical College.</p></div></div>
+      <div class="cred"><div class="yr">'25</div><div><h4>Doane Athletics Hall of Fame</h4><p>Inducted in March 2025 in recognition of a legendary career.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery" class="gallery">
+  <div class="wrap">
+    <p class="sectlabel">In the Room &amp; On the Podium</p>
+    <h2>Gallery</h2>
+    <div class="slider">
+      <div class="track" id="track">
+        <div class="slide">
+          <img src="public/01.jpg" alt="Coach Baagii – photo 1">
+          <div class="caption">2020 NAIA National Championship</div>
+        </div>
+        <div class="slide">
+          <img src="public/02.jpg" alt="Coach Baagii – photo 2">
+          <div class="caption"></div>
+        </div>
+        <div class="slide">
+          <img src="public/03.jpg" alt="Coach Baagii – photo 3">
+          <div class="caption"></div>
+        </div>
+        <div class="slide">
+          <img src="public/04.jpg" alt="Coach Baagii – photo 4">
+          <div class="caption"></div>
+        </div>
+      </div>
+      <button class="arrow prev" id="prev" aria-label="Previous slide">&#8249;</button>
+      <button class="arrow next" id="next" aria-label="Next slide">&#8250;</button>
+    </div>
+    <div class="dots" id="dots"></div>
+  </div>
+</section>
+
+<section id="book">
+  <div class="wrap">
+    <div class="book">
+      <div>
+        <p class="sectlabel" style="color:#cfe0f2">Get Started</p>
+        <h2>Book a Session</h2>
+        <p>Spots are limited and fill fast before tournament season. Reach out to claim a tryout class or set up private coaching for your wrestler.</p>
+        <a href="mailto:coach@baagiiwrestling.com?subject=Session%20Inquiry" class="btn">Email Coach Baagii</a>
+      </div>
+      <div class="ratebox">
+        <div class="rateline"><span>Tryout Class</span><b>Free</b></div>
+        <div class="rateline"><span>Club Monthly</span><b>$85</b></div>
+        <div class="rateline"><span>Private (1 hr)</span><b>$60</b></div>
+        <div class="rateline"><span>Group of 3</span><b>$30/ea</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand">Coach <span style="color:var(--gold)">Baagii</span></div>
+    <div class="fcontact">
+      <span>coach@baagiiwrestling.com</span>
+      <span>(555) 248-1900</span>
+    </div>
+    <p style="font-size:.8rem">© 2026 Baagii Boldmaa Wrestling. Folkstyle coaching for the next generation.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var track=document.getElementById('track');
+  var slides=track.children;
+  var total=slides.length;
+  var dotsWrap=document.getElementById('dots');
+  var i=0,timer;
+  for(var d=0;d<total;d++){
+    var b=document.createElement('button');
+    b.setAttribute('aria-label','Go to slide '+(d+1));
+    (function(idx){b.addEventListener('click',function(){go(idx);reset();});})(d);
+    dotsWrap.appendChild(b);
+  }
+  var dots=dotsWrap.children;
+  function go(n){
+    i=(n+total)%total;
+    track.style.transform='translateX(-'+(i*100)+'%)';
+    for(var k=0;k<total;k++)dots[k].className=(k===i?'active':'');
+  }
+  function reset(){clearInterval(timer);timer=setInterval(function(){go(i+1);},5000);}
+  document.getElementById('next').addEventListener('click',function(){go(i+1);reset();});
+  document.getElementById('prev').addEventListener('click',function(){go(i-1);reset();});
+  go(0);reset();
+})();
+</script>
+</body>
+</html>
