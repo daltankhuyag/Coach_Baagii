@@ -51,11 +51,26 @@
   header.hero{
     background:
       linear-gradient(180deg,rgba(16,21,28,.74),rgba(16,21,28,.9)),
-      url('public/02.jpg') center/cover no-repeat;
+      url('public/02.jpg') center top/cover no-repeat;
     color:#fff;
     padding:96px 0 84px;
     border-bottom:4px solid var(--gold);
     position:relative;overflow:hidden;
+  }
+  @media(max-width:900px){
+    header.hero{
+      padding:72px 0 60px;
+      background-position:center, center top;
+    }
+  }
+  @media(max-width:600px){
+    header.hero{
+      padding:56px 0 48px;
+      background-position:center, 60% top;
+      background-image:
+        linear-gradient(180deg,rgba(16,21,28,.82),rgba(16,21,28,.95)),
+        url('public/02.jpg');
+    }
   }
   .eyebrow{font-family:'Barlow Condensed';font-weight:700;text-transform:uppercase;letter-spacing:.28em;font-size:.82rem;color:var(--gold)}
   header.hero h1{
@@ -133,9 +148,7 @@
   .slider{position:relative;border-radius:12px;overflow:hidden;border:1px solid #283341;background:#0c1117}
   .track{display:flex;transition:transform .5s cubic-bezier(.4,0,.2,1)}
   .slide{min-width:100%;aspect-ratio:16/9;position:relative;display:flex;align-items:flex-end}
-  .slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center}
-  .slide.ph{background:repeating-linear-gradient(135deg,#171f29 0 30px,#10151c 30px 60px);align-items:center;justify-content:center}
-  .slide.ph span{font-family:'Barlow Condensed';font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#3a4654;font-size:1.1rem}
+  .slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
   .caption{position:relative;z-index:2;width:100%;padding:20px 24px;background:linear-gradient(0deg,rgba(8,11,15,.85),transparent);font-family:'Barlow Condensed';font-weight:600;text-transform:uppercase;letter-spacing:.06em;font-size:1.05rem}
   .arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:46px;height:46px;border-radius:50%;border:0;background:rgba(232,160,25,.92);color:var(--ink);font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
   .arrow:hover{background:var(--gold)}
@@ -243,10 +256,6 @@
     <h2>Gallery</h2>
     <div class="slider">
       <div class="track" id="track">
-        <div class="slide">
-          <img src="public/01.jpg" alt="Coach Baagii – photo 1">
-          <div class="caption">2020 NAIA National Championship</div>
-        </div>
         <div class="slide">
           <img src="public/02.jpg" alt="Coach Baagii – photo 2">
           <div class="caption"></div>
