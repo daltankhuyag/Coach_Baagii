@@ -413,6 +413,26 @@
   .program h3{font-size:2rem;line-height:.95;margin:10px 0 14px}
   .program p{color:var(--muted);font-size:1.05rem;margin-bottom:18px}
   .meta{font-size:1rem;color:var(--metal)}
+  .program-link{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    margin-top:20px;
+    padding:11px 18px;
+    border-radius:999px;
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.04);
+    color:var(--metal);
+    font-family:'Bebas Neue',sans-serif;
+    font-size:1rem;
+    letter-spacing:.06em;
+    transition:transform .2s ease, border-color .2s ease, color .2s ease;
+  }
+  .program-link:hover{
+    transform:translateY(-2px);
+    border-color:rgba(255,74,61,.45);
+    color:#fff0ed;
+  }
 
   .results-grid{grid-template-columns:repeat(2, minmax(0,1fr));margin-top:28px}
   .result{padding:24px}
@@ -592,7 +612,7 @@
       <h1><span>Iron Wolf</span><strong>Wrestling Academy</strong></h1>
       <p class="lede">Built around Coach Baagii Boldmaa's competitive edge, the academy brand now carries the same aggressive energy as the logo: dark, disciplined, and unmistakable.</p>
       <div class="hero-actions">
-        <a href="#book" class="btn">Book a Session</a>
+        <a href="mailto:coach@baagiiwrestling.com?subject=Session%20Inquiry" class="btn" aria-label="Email Coach Baagii to book a session">Book a Session</a>
         <a href="#about" class="btn ghost">Meet Coach Baagii</a>
       </div>
       <div class="hero-stats">
@@ -636,25 +656,28 @@
   <div class="wrap">
     <p class="section-label">Train With Me</p>
     <h2>Programs With A Harder Identity</h2>
-    <p class="lead">The logo suggests intensity, but the offer still needs clarity. These program cards now sit inside the same dark-metal system as the rest of the brand.</p>
+    <p class="lead">Choose the training path that fits your wrestler now, then use the new training page to see the structure, focus, and next step for each program.</p>
     <div class="program-grid">
       <article class="program">
         <div class="kicker">01</div>
         <h3>Youth Club</h3>
         <p>Ages 6-13. Introduces stance, motion, and core folkstyle positions in a room that builds confidence without lowering standards.</p>
         <div class="meta">Tue and Thu | 6-7:30 PM</div>
+        <a href="/training.html#youth-club" class="program-link">Learn More</a>
       </article>
       <article class="program">
         <div class="kicker">02</div>
         <h3>Scholastic Squad</h3>
         <p>Middle and high school wrestlers get live goes, situational drilling, and match strategy for districts, regionals, and state runs.</p>
         <div class="meta">Mon, Wed, Fri | 5-7 PM</div>
+        <a href="/training.html#scholastic-squad" class="program-link">Learn More</a>
       </article>
       <article class="program">
         <div class="kicker">03</div>
         <h3>Private Sessions</h3>
         <p>One-on-one or small-group coaching for top work, takedown entries, mat returns, or a focused pre-tournament tune-up.</p>
         <div class="meta">By appointment</div>
+        <a href="/training.html#private-sessions" class="program-link">Learn More</a>
       </article>
     </div>
   </div>

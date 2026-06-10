@@ -7,6 +7,7 @@ const port = Number(process.env.PORT) || 3000;
 const rootDir = __dirname;
 const publicDir = path.join(rootDir, "public");
 const indexFile = path.join(rootDir, "coach-site_1.html");
+const trainingFile = path.join(rootDir, "training.html");
 
 const mimeTypes = {
   ".css": "text/css; charset=utf-8",
@@ -66,6 +67,11 @@ const server = http.createServer((request, response) => {
 
   if (requestPath === "/" || requestPath === "/coach-site_1.html") {
     sendFile(indexFile, response);
+    return;
+  }
+
+  if (requestPath === "/training" || requestPath === "/training.html") {
+    sendFile(trainingFile, response);
     return;
   }
 

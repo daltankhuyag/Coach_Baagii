@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Training Programs | Iron Wolf Wrestling Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#070707;
+    --panel:rgba(15,15,17,.92);
+    --panel-soft:rgba(255,255,255,.03);
+    --line:rgba(255,255,255,.08);
+    --text:#f3efec;
+    --muted:#b9b1ad;
+    --metal:#d6d0cb;
+    --ember:#a11212;
+    --ember-bright:#ff4a3d;
+    --maxw:1180px;
+    --glow:0 0 24px rgba(255,74,61,.28);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Rajdhani',sans-serif;
+    color:var(--text);
+    line-height:1.6;
+    background:
+      radial-gradient(circle at top left, rgba(255,74,61,.12), transparent 22%),
+      radial-gradient(circle at top right, rgba(255,255,255,.05), transparent 18%),
+      linear-gradient(180deg, #090909 0%, #050506 42%, #090909 100%);
+    min-height:100vh;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .eyebrow,h1,h2,h3,.brand-name,.navlinks a,.btn,.section-label,.module-kicker,.detail-label{
+    font-family:'Bebas Neue',sans-serif;
+    letter-spacing:.06em;
+  }
+  nav{
+    position:sticky;
+    top:0;
+    z-index:50;
+    backdrop-filter:blur(14px);
+    background:rgba(8,8,9,.84);
+    border-bottom:1px solid rgba(255,255,255,.06);
+  }
+  nav .wrap{
+    min-height:82px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+  }
+  .brand{display:flex;align-items:center;gap:14px;min-width:0}
+  .brand img{width:54px;height:54px;object-fit:cover;border-radius:14px;border:1px solid rgba(255,74,61,.35);box-shadow:var(--glow)}
+  .brand-copy{display:flex;flex-direction:column;line-height:1}
+  .brand-name{font-size:1.7rem;color:var(--metal)}
+  .brand-copy span{color:var(--muted);font-size:.92rem;letter-spacing:.14em;text-transform:uppercase}
+  .navlinks{display:flex;align-items:center;gap:24px;flex-wrap:wrap;justify-content:flex-end}
+  .navlinks a{color:#e4dedb;font-size:1rem;transition:color .2s ease}
+  .navlinks a:hover{color:var(--ember-bright)}
+  .navcta{
+    padding:11px 18px;
+    border-radius:999px;
+    border:1px solid rgba(255,74,61,.45);
+    background:rgba(255,74,61,.1);
+    box-shadow:var(--glow);
+  }
+  .hero{
+    position:relative;
+    overflow:hidden;
+    padding:74px 0 48px;
+    background:
+      radial-gradient(circle at 20% 18%, rgba(255,74,61,.16), transparent 18%),
+      radial-gradient(circle at 80% 14%, rgba(255,255,255,.07), transparent 18%),
+      linear-gradient(180deg, #0b0b0c 0%, #060607 62%, rgba(6,6,7,0) 100%);
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:-6%;
+    background:
+      radial-gradient(circle at 22% 28%, rgba(255,255,255,.1), transparent 14%),
+      radial-gradient(circle at 76% 28%, rgba(255,255,255,.08), transparent 16%),
+      linear-gradient(120deg, transparent 0 42%, rgba(255,74,61,.18) 46%, transparent 50%),
+      linear-gradient(236deg, transparent 0 48%, rgba(255,74,61,.12) 52%, transparent 56%);
+    filter:blur(9px);
+    opacity:.5;
+    animation:stormDrift 28s ease-in-out infinite alternate;
+    pointer-events:none;
+  }
+  .hero-grid{
+    position:relative;
+    z-index:2;
+    display:grid;
+    grid-template-columns:minmax(0,1.08fr) minmax(320px,.92fr);
+    gap:28px;
+    align-items:center;
+  }
+  .hero-copy,.hero-visual,.training-card,.summary-card,.cta-band{
+    border:1px solid var(--line);
+    background:linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.018));
+    border-radius:28px;
+    box-shadow:0 20px 60px rgba(0,0,0,.22);
+  }
+  .hero-copy{padding:36px}
+  .eyebrow{color:var(--ember-bright);font-size:1rem;margin-bottom:18px}
+  h1{font-size:clamp(3.8rem,9vw,7.6rem);line-height:.88;margin-bottom:18px}
+  h1 span{display:block;color:#f3efec}
+  h1 strong{display:block;color:#ff5b4c;font-weight:400;text-shadow:0 0 28px rgba(255,74,61,.35)}
+  .lead{max-width:680px;color:var(--muted);font-size:1.16rem}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    border:1px solid rgba(255,74,61,.55);
+    background:linear-gradient(180deg, #cf1d1d 0%, #8f1010 100%);
+    color:#fff4f2;
+    padding:14px 26px;
+    border-radius:999px;
+    font-size:1.12rem;
+    transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    box-shadow:var(--glow);
+  }
+  .btn:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.55)}
+  .btn.ghost{background:rgba(255,255,255,.02);color:var(--metal);border-color:rgba(214,208,203,.22);box-shadow:none}
+  .hero-visual{padding:22px;overflow:hidden}
+  .hero-visual img{width:100%;border-radius:22px;filter:drop-shadow(0 24px 36px rgba(0,0,0,.65))}
+  section{padding:32px 0 84px}
+  .section-label{color:var(--ember-bright);font-size:1rem;margin-bottom:10px}
+  h2{font-size:clamp(2.4rem,5vw,4.1rem);line-height:.95;margin-bottom:14px}
+  .summary-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:28px}
+  .summary-card{padding:24px}
+  .summary-card h3{font-size:1.8rem;line-height:.95;color:var(--metal);margin-bottom:10px}
+  .summary-card p{color:var(--muted);font-size:1rem}
+  .training-stack{display:grid;gap:22px;margin-top:28px}
+  .training-card{padding:30px}
+  .module-kicker{color:var(--ember-bright);font-size:1rem;margin-bottom:10px}
+  .training-card h3{font-size:2.4rem;line-height:.95;color:var(--metal);margin-bottom:12px}
+  .training-card > p{color:var(--muted);font-size:1.08rem;max-width:760px}
+  .details{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:22px}
+  .detail{
+    padding:16px 18px;
+    border-radius:18px;
+    background:var(--panel-soft);
+    border:1px solid rgba(255,255,255,.06);
+  }
+  .detail-label{display:block;color:var(--ember-bright);font-size:.9rem;margin-bottom:8px}
+  .detail p{color:var(--metal);font-size:1rem;line-height:1.35}
+  .cta-band{padding:32px;display:grid;grid-template-columns:minmax(0,1.1fr) auto;gap:18px;align-items:center;margin-top:36px}
+  .cta-band p{color:var(--muted);font-size:1.08rem}
+  footer{border-top:1px solid rgba(255,255,255,.08);padding:40px 0 52px}
+  .foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+  .fcontact{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:1rem}
+  @keyframes stormDrift{
+    from{transform:translate3d(-2%,0,0) scale(1.04)}
+    to{transform:translate3d(2%,-1.5%,0) scale(1.08)}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .hero::before{animation:none;transform:none}
+  }
+  @media(max-width:980px){
+    .hero-grid,.summary-grid,.details,.cta-band{grid-template-columns:1fr}
+  }
+  @media(max-width:780px){
+    nav .wrap{padding-top:14px;padding-bottom:14px}
+    .navlinks a:not(.navcta){display:none}
+  }
+  @media(max-width:560px){
+    .wrap{padding:0 18px}
+    .hero-copy,.hero-visual,.training-card,.summary-card,.cta-band{padding:22px;border-radius:22px}
+  }
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Iron Wolf Wrestling Academy home">
+      <img src="public/Logo.png" alt="Iron Wolf Wrestling Academy logo">
+      <div class="brand-copy">
+        <strong class="brand-name">Iron Wolf Wrestling Academy</strong>
+        <span>Coach Baagii Boldmaa</span>
+      </div>
+    </a>
+    <div class="navlinks">
+      <a href="/">Home</a>
+      <a href="#program-overview">Overview</a>
+      <a href="#training-paths">Training</a>
+      <a href="#contact" class="navcta">Start Training</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Training Paths For Every Stage Of Development.</p>
+      <h1><span>Iron Wolf</span><strong>Training Programs</strong></h1>
+      <p class="lead">This page breaks down how each program works, who it serves best, and what wrestlers should expect when they step into the room with Coach Baagii.</p>
+      <div class="hero-actions">
+        <a href="mailto:coach@baagiiwrestling.com?subject=Training%20Program%20Inquiry" class="btn">Ask About Training</a>
+        <a href="#training-paths" class="btn ghost">Explore Programs</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <img src="public/Logo.png" alt="Iron Wolf Wrestling Academy brand mark">
+    </div>
+  </div>
+</header>
+
+<section id="program-overview">
+  <div class="wrap">
+    <p class="section-label">Program Overview</p>
+    <h2>Three Ways To Train</h2>
+    <p class="lead">Each track is built around the same values: strength, toughness, discipline, and resilience. The difference is the level of detail, pace, and individual attention each athlete needs.</p>
+    <div class="summary-grid">
+      <article class="summary-card">
+        <h3>Youth Club</h3>
+        <p>For younger wrestlers who need fundamentals, confidence, and room structure that keeps standards high without overwhelming them.</p>
+      </article>
+      <article class="summary-card">
+        <h3>Scholastic Squad</h3>
+        <p>For middle and high school wrestlers chasing competitive growth, sharper match tactics, and better live performance.</p>
+      </article>
+      <article class="summary-card">
+        <h3>Private Sessions</h3>
+        <p>For focused technical correction, individual game plans, and faster improvement in specific positions or sequences.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="training-paths">
+  <div class="wrap">
+    <p class="section-label">Training Paths</p>
+    <h2>Learn More About Each Program</h2>
+    <div class="training-stack">
+      <article class="training-card" id="youth-club">
+        <div class="module-kicker">01 · Youth Foundation</div>
+        <h3>Youth Club</h3>
+        <p>Ages 6-13. This program introduces stance, motion, basic attacks, mat awareness, and the core folkstyle positions in a room designed to build confidence and coachable habits from the start.</p>
+        <div class="details">
+          <div class="detail"><span class="detail-label">Best For</span><p>Newer wrestlers and younger athletes building fundamentals.</p></div>
+          <div class="detail"><span class="detail-label">Training Focus</span><p>Stance, motion, hand fighting, level changes, and top-bottom basics.</p></div>
+          <div class="detail"><span class="detail-label">Schedule</span><p>Tue and Thu, 6-7:30 PM. Structured reps with positive accountability.</p></div>
+        </div>
+      </article>
+
+      <article class="training-card" id="scholastic-squad">
+        <div class="module-kicker">02 · Competitive Room</div>
+        <h3>Scholastic Squad</h3>
+        <p>Built for middle and high school wrestlers who need more live work, sharper chain wrestling, and better tactical decisions against real pressure. This room is designed for athletes pushing toward postseason results.</p>
+        <div class="details">
+          <div class="detail"><span class="detail-label">Best For</span><p>Experienced youth, middle school, and high school wrestlers.</p></div>
+          <div class="detail"><span class="detail-label">Training Focus</span><p>Situational wrestling, live goes, pace management, and match strategy.</p></div>
+          <div class="detail"><span class="detail-label">Schedule</span><p>Mon, Wed, Fri, 5-7 PM with a strong emphasis on competition transfer.</p></div>
+        </div>
+      </article>
+
+      <article class="training-card" id="private-sessions">
+        <div class="module-kicker">03 · Focused Correction</div>
+        <h3>Private Sessions</h3>
+        <p>Private work is for wrestlers who need a specific problem solved fast, whether that means leg attacks, mat returns, top pressure, hand fighting sequences, or a custom plan leading into a tournament.</p>
+        <div class="details">
+          <div class="detail"><span class="detail-label">Best For</span><p>Athletes targeting a weakness or preparing for a key stretch of the season.</p></div>
+          <div class="detail"><span class="detail-label">Training Focus</span><p>Individual technique, film-informed adjustments, and repeatable scoring sequences.</p></div>
+          <div class="detail"><span class="detail-label">Schedule</span><p>By appointment for one-on-one or small-group technical work.</p></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="cta-band" id="contact">
+      <div>
+        <p class="section-label">Next Step</p>
+        <h2>Start The Right Program</h2>
+        <p>Email Coach Baagii to talk through which training path fits your wrestler best and how to get started with a tryout, club schedule, or private session.</p>
+      </div>
+      <a href="mailto:coach@baagiiwrestling.com?subject=Training%20Program%20Inquiry" class="btn">Contact Coach Baagii</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div class="brand-copy">
+      <strong class="brand-name">Iron Wolf Wrestling Academy</strong>
+      <span>Coach Baagii Boldmaa</span>
+    </div>
+    <div class="fcontact">
+      <span>coach@baagiiwrestling.com</span>
+      <span>(555) 248-1900</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
