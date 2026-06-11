@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Youth Club | Iron Wolf Wrestling Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#070707;
+    --panel:rgba(15,15,17,.92);
+    --panel-soft:rgba(255,255,255,.03);
+    --line:rgba(255,255,255,.08);
+    --text:#f3efec;
+    --muted:#b9b1ad;
+    --metal:#d6d0cb;
+    --ember:#a11212;
+    --ember-bright:#ff4a3d;
+    --maxw:1180px;
+    --glow:0 0 24px rgba(255,74,61,.28);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Rajdhani',sans-serif;
+    color:var(--text);
+    line-height:1.6;
+    background:
+      radial-gradient(circle at top left, rgba(255,74,61,.12), transparent 22%),
+      radial-gradient(circle at top right, rgba(255,255,255,.05), transparent 18%),
+      linear-gradient(180deg, #090909 0%, #050506 42%, #090909 100%);
+    min-height:100vh;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .eyebrow,h1,h2,h3,.brand-name,.navlinks a,.btn,.section-label,.kicker,.detail-label,.pill{
+    font-family:'Bebas Neue',sans-serif;
+    letter-spacing:.06em;
+  }
+  nav{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(14px);
+    background:rgba(8,8,9,.84);
+    border-bottom:1px solid rgba(255,255,255,.06);
+  }
+  nav .wrap{
+    min-height:82px;display:flex;align-items:center;
+    justify-content:space-between;gap:24px;
+  }
+  .brand{display:flex;align-items:center;gap:14px;min-width:0}
+  .brand img{width:54px;height:54px;object-fit:cover;border-radius:14px;border:1px solid rgba(255,74,61,.35);box-shadow:var(--glow)}
+  .brand-copy{display:flex;flex-direction:column;line-height:1}
+  .brand-name{font-size:1.7rem;color:var(--metal)}
+  .brand-copy span{color:var(--muted);font-size:.92rem;letter-spacing:.14em;text-transform:uppercase}
+  .navlinks{display:flex;align-items:center;gap:24px;flex-wrap:wrap;justify-content:flex-end}
+  .navlinks a{color:#e4dedb;font-size:1rem;transition:color .2s ease}
+  .navlinks a:hover{color:var(--ember-bright)}
+  .navcta{
+    padding:11px 18px;border-radius:999px;
+    border:1px solid rgba(255,74,61,.45);
+    background:rgba(255,74,61,.1);box-shadow:var(--glow);
+  }
+
+  .hero{
+    position:relative;overflow:hidden;padding:72px 0 52px;
+    background:
+      radial-gradient(circle at 20% 18%, rgba(255,74,61,.16), transparent 18%),
+      radial-gradient(circle at 80% 14%, rgba(255,255,255,.07), transparent 18%),
+      linear-gradient(180deg, #0b0b0c 0%, #060607 62%, rgba(6,6,7,0) 100%);
+  }
+  .hero::before{
+    content:"";position:absolute;inset:-6%;
+    background:
+      radial-gradient(circle at 22% 28%, rgba(255,255,255,.1), transparent 14%),
+      radial-gradient(circle at 76% 28%, rgba(255,255,255,.08), transparent 16%),
+      linear-gradient(120deg, transparent 0 42%, rgba(255,74,61,.18) 46%, transparent 50%),
+      linear-gradient(236deg, transparent 0 48%, rgba(255,74,61,.12) 52%, transparent 56%);
+    filter:blur(9px);opacity:.5;
+    animation:stormDrift 28s ease-in-out infinite alternate;
+    pointer-events:none;
+  }
+  .hero-grid{
+    position:relative;z-index:2;
+    display:grid;grid-template-columns:minmax(0,1.08fr) minmax(300px,.92fr);
+    gap:28px;align-items:center;
+  }
+  .hero-copy,.hero-visual,.card,.detail-box,.session-block,.cta-band{
+    border:1px solid var(--line);
+    background:linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.018));
+    border-radius:28px;box-shadow:0 20px 60px rgba(0,0,0,.22);
+  }
+  .hero-copy{padding:38px}
+  .program-badge{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:8px 16px;border-radius:999px;
+    border:1px solid rgba(255,74,61,.3);
+    background:rgba(255,74,61,.08);
+    margin-bottom:20px;
+  }
+  .program-badge .num{font-family:'Bebas Neue',sans-serif;font-size:1rem;color:var(--ember-bright);letter-spacing:.1em}
+  .program-badge .label{color:var(--muted);font-size:.9rem;letter-spacing:.12em;text-transform:uppercase}
+  h1{font-size:clamp(3.8rem,9vw,7.2rem);line-height:.88;margin-bottom:18px}
+  h1 span{display:block;color:#f3efec}
+  h1 strong{display:block;color:#ff5b4c;font-weight:400;text-shadow:0 0 28px rgba(255,74,61,.35)}
+  .lead{max-width:660px;color:var(--muted);font-size:1.16rem}
+  .hero-meta{
+    display:flex;gap:12px;flex-wrap:wrap;margin-top:22px;
+  }
+  .pill{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:8px 16px;border-radius:999px;
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.1);
+    font-size:.96rem;color:var(--metal);
+  }
+  .pill svg{flex-shrink:0;opacity:.7}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:12px;
+    border:1px solid rgba(255,74,61,.55);
+    background:linear-gradient(180deg, #cf1d1d 0%, #8f1010 100%);
+    color:#fff4f2;padding:14px 26px;border-radius:999px;font-size:1.12rem;
+    transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    box-shadow:var(--glow);
+  }
+  .btn:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.55)}
+  .btn.ghost{background:rgba(255,255,255,.02);color:var(--metal);border-color:rgba(214,208,203,.22);box-shadow:none}
+  .btn.ghost:hover{border-color:rgba(255,74,61,.45)}
+  .hero-visual{padding:22px;overflow:hidden}
+  .hero-visual img{width:100%;border-radius:22px;filter:drop-shadow(0 24px 36px rgba(0,0,0,.65))}
+
+  section{padding:32px 0 72px}
+  .section-label{color:var(--ember-bright);font-size:1rem;margin-bottom:10px}
+  h2{font-size:clamp(2.4rem,5vw,4rem);line-height:.95;margin-bottom:14px}
+  h3{font-size:2rem;line-height:.95;color:var(--metal);margin-bottom:12px}
+
+  .three-col{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:28px}
+  .two-col{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:28px}
+  .card{padding:26px}
+  .kicker{color:var(--ember-bright);font-size:1rem;margin-bottom:8px}
+  .card h3{font-size:1.7rem;margin-bottom:10px}
+  .card p{color:var(--muted);font-size:1.02rem}
+  .card ul{list-style:none;margin-top:14px}
+  .card ul li{
+    color:var(--muted);font-size:1rem;
+    padding:8px 0;border-bottom:1px solid rgba(255,255,255,.06);
+    display:flex;align-items:flex-start;gap:10px;
+  }
+  .card ul li:last-child{border-bottom:0}
+  .card ul li::before{
+    content:"→";color:var(--ember-bright);flex-shrink:0;margin-top:1px;
+  }
+
+  .session-block{padding:30px;margin-top:28px}
+  .session-block h3{font-size:2rem;margin-bottom:8px}
+  .session-block > p{color:var(--muted);font-size:1.1rem;max-width:720px;margin-bottom:24px}
+  .session-steps{display:grid;gap:0}
+  .step{
+    display:grid;grid-template-columns:56px minmax(0,1fr);gap:16px;
+    padding:18px 0;border-bottom:1px solid rgba(255,255,255,.06);
+    align-items:start;
+  }
+  .step:last-child{border-bottom:0}
+  .step-num{
+    width:44px;height:44px;border-radius:50%;
+    background:rgba(255,74,61,.1);border:1px solid rgba(255,74,61,.3);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--ember-bright);flex-shrink:0;
+  }
+  .step-copy strong{display:block;font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--metal);letter-spacing:.05em;line-height:1;margin-bottom:6px}
+  .step-copy p{color:var(--muted);font-size:1rem}
+
+  .detail-box{padding:22px;margin-top:18px}
+  .detail-label{display:block;color:var(--ember-bright);font-size:.9rem;margin-bottom:6px}
+  .detail-box p{color:var(--metal);font-size:1rem;line-height:1.4}
+
+  .faq-stack{display:grid;gap:12px;margin-top:28px}
+  .faq{
+    border:1px solid rgba(255,255,255,.08);
+    background:rgba(255,255,255,.025);
+    border-radius:20px;padding:22px 24px;
+  }
+  .faq strong{display:block;font-family:'Bebas Neue',sans-serif;font-size:1.35rem;color:var(--metal);letter-spacing:.05em;margin-bottom:8px}
+  .faq p{color:var(--muted);font-size:1.02rem}
+
+  .cta-band{
+    padding:36px;display:grid;
+    grid-template-columns:minmax(0,1.1fr) auto;
+    gap:18px;align-items:center;margin-top:36px;
+  }
+  .cta-band h2{margin-bottom:8px}
+  .cta-band p{color:var(--muted);font-size:1.08rem}
+
+  footer{border-top:1px solid rgba(255,255,255,.08);padding:40px 0 52px}
+  .foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+  .fcontact{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:1rem}
+
+  @keyframes stormDrift{
+    from{transform:translate3d(-2%,0,0) scale(1.04)}
+    to{transform:translate3d(2%,-1.5%,0) scale(1.08)}
+  }
+  @media(prefers-reduced-motion:reduce){.hero::before{animation:none;transform:none}}
+  @media(max-width:980px){
+    .hero-grid,.cta-band{grid-template-columns:1fr}
+    .three-col{grid-template-columns:repeat(2,minmax(0,1fr))}
+  }
+  @media(max-width:780px){
+    nav .wrap{padding-top:14px;padding-bottom:14px}
+    .navlinks a:not(.navcta){display:none}
+  }
+  @media(max-width:560px){
+    .wrap{padding:0 18px}
+    .three-col,.two-col{grid-template-columns:1fr}
+    .hero-copy,.hero-visual,.card,.session-block,.cta-band{padding:22px;border-radius:22px}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Iron Wolf Wrestling Academy home">
+      <img src="public/Logo.png" alt="Iron Wolf Wrestling Academy logo">
+      <div class="brand-copy">
+        <strong class="brand-name">Iron Wolf Wrestling Academy</strong>
+        <span>Coach Baagii Boldmaa</span>
+      </div>
+    </a>
+    <div class="navlinks">
+      <a href="/">Home</a>
+      <a href="/training.html">Programs</a>
+      <a href="/scholastic-squad.html">Scholastic Squad</a>
+      <a href="/private-sessions.html">Private Sessions</a>
+      <a href="mailto:coach@baagiiwrestling.com?subject=Youth%20Club%20Inquiry" class="navcta">Start Training</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <div class="program-badge"><span class="num">01</span><span class="label">Youth Foundation</span></div>
+      <h1><span>Youth</span><strong>Club</strong></h1>
+      <p class="lead">Ages 6–13. Introduces stance, motion, and core folkstyle positions in a room that builds confidence without lowering standards.</p>
+      <div class="hero-meta">
+        <div class="pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Tue &amp; Thu, 6–7:30 PM
+        </div>
+        <div class="pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg>
+          Ages 6–13
+        </div>
+        <div class="pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          All Experience Levels
+        </div>
+      </div>
+      <div class="hero-actions">
+        <a href="mailto:coach@baagiiwrestling.com?subject=Youth%20Club%20Inquiry" class="btn">Join the Youth Club</a>
+        <a href="/training.html" class="btn ghost">See All Programs</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <img src="public/Logo.png" alt="Iron Wolf Wrestling Academy brand mark">
+    </div>
+  </div>
+</header>
+
+<section id="overview">
+  <div class="wrap">
+    <p class="section-label">Program Overview</p>
+    <h2>A Serious Room Built For Young Wrestlers</h2>
+    <p class="lead">The Youth Club is not a babysitting service with mats. It is a structured program where younger athletes learn how to train, how to compete, and how to hold themselves to a standard from the very first day.</p>
+    <div class="three-col">
+      <article class="card">
+        <div class="kicker">Foundation</div>
+        <h3>What We Build</h3>
+        <ul>
+          <li>Athletic stance and proper motion</li>
+          <li>Hand fighting and collar ties</li>
+          <li>Level change and penetration step</li>
+          <li>Top and bottom position fundamentals</li>
+          <li>Breakdowns and short offense from top</li>
+          <li>Stand-up and hip movement from bottom</li>
+        </ul>
+      </article>
+      <article class="card">
+        <div class="kicker">Standards</div>
+        <h3>What We Expect</h3>
+        <ul>
+          <li>On time and ready to work</li>
+          <li>Effort on every single rep</li>
+          <li>Respect for training partners</li>
+          <li>Coachability above everything</li>
+          <li>Eyes on the coach during instruction</li>
+          <li>Compete hard, win clean, lose with pride</li>
+        </ul>
+      </article>
+      <article class="card">
+        <div class="kicker">Results</div>
+        <h3>What Athletes Gain</h3>
+        <ul>
+          <li>Confidence in competitive situations</li>
+          <li>A technical base that carries to higher levels</li>
+          <li>Stronger body awareness and athleticism</li>
+          <li>Discipline that transfers outside the room</li>
+          <li>A clear understanding of how to train</li>
+          <li>Real match experience in a safe setting</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="session-structure" style="padding-top:0">
+  <div class="wrap">
+    <p class="section-label">What A Practice Looks Like</p>
+    <h2>How We Run A Session</h2>
+    <div class="session-block">
+      <h3>Typical 90-Minute Practice</h3>
+      <p>Every session follows the same structure so athletes know what to expect and can measure their own progress over time.</p>
+      <div class="session-steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-copy">
+            <strong>Warm-Up &amp; Movement (15 min)</strong>
+            <p>Dynamic stretching, wrestling-specific agility work, and body positioning drills. Builds athleticism while prepping joints for live work.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-copy">
+            <strong>Technique Block (30 min)</strong>
+            <p>Coach Baagii introduces or refines one to two positions. Full demonstration, coached repetitions, and partner drilling with individual correction.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-copy">
+            <strong>Situational Drilling (20 min)</strong>
+            <p>Athletes apply the technique from a specific starting position — standing, on top, or on bottom. Controlled intensity with clear objectives.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div class="step-copy">
+            <strong>Live Wrestling (15 min)</strong>
+            <p>Supervised live goes with age and skill-matched partners. Emphasis on using what was covered in practice, not just surviving.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">05</div>
+          <div class="step-copy">
+            <strong>Cool-Down &amp; Recap (10 min)</strong>
+            <p>Stretching, quick review of the session's focal points, and individual feedback where needed before athletes leave the mat.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="details" style="padding-top:0">
+  <div class="wrap">
+    <p class="section-label">Program Details</p>
+    <h2>Schedule, Pricing &amp; First Steps</h2>
+    <div class="two-col">
+      <article class="card">
+        <div class="kicker">Schedule</div>
+        <h3>When We Train</h3>
+        <p>Youth Club practices run Tuesday and Thursday evenings, 6:00–7:30 PM. Consistent attendance is strongly encouraged — athletes who show up every session build faster.</p>
+        <div class="detail-box" style="margin-top:18px">
+          <span class="detail-label">Days</span>
+          <p>Tuesday &amp; Thursday</p>
+        </div>
+        <div class="detail-box">
+          <span class="detail-label">Time</span>
+          <p>6:00 PM – 7:30 PM</p>
+        </div>
+        <div class="detail-box">
+          <span class="detail-label">Season</span>
+          <p>Year-round with breaks around major holidays</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="kicker">Investment</div>
+        <h3>What It Costs</h3>
+        <p>The first tryout class is free. After that, monthly dues cover unlimited Youth Club practices. No long-term contracts required.</p>
+        <div class="detail-box" style="margin-top:18px">
+          <span class="detail-label">Tryout Class</span>
+          <p>Free — no commitment required</p>
+        </div>
+        <div class="detail-box">
+          <span class="detail-label">Monthly Club Dues</span>
+          <p>$85 / month for all Youth Club sessions</p>
+        </div>
+        <div class="detail-box">
+          <span class="detail-label">What To Bring</span>
+          <p>Wrestling shoes if available, athletic shorts, and a water bottle. We'll handle the rest.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="padding-top:0">
+  <div class="wrap">
+    <p class="section-label">Common Questions</p>
+    <h2>What Parents Ask</h2>
+    <div class="faq-stack">
+      <div class="faq">
+        <strong>Does my child need prior wrestling experience?</strong>
+        <p>No. The Youth Club accepts beginners. We build from stance and motion regardless of background, so athletes who have never wrestled before will be coached at their level from the first session.</p>
+      </div>
+      <div class="faq">
+        <strong>What age range does the Youth Club cover?</strong>
+        <p>Ages 6 through 13. If your child is close to the edge of that range and you are unsure of the right fit, come to a tryout session and Coach Baagii will make a recommendation based on what he sees in the room.</p>
+      </div>
+      <div class="faq">
+        <strong>Is this the same as a school wrestling team?</strong>
+        <p>No. The Youth Club is a club program with smaller groups, more individual coaching attention, and a focus on technical development rather than meeting school eligibility requirements. Many athletes do both simultaneously.</p>
+      </div>
+      <div class="faq">
+        <strong>How physical is it? Should I be concerned about injuries?</strong>
+        <p>Contact is controlled and age-appropriate at this level. Live drilling and live wrestling are supervised closely. Coach Baagii prioritizes technical development over uncontrolled roughhousing.</p>
+      </div>
+      <div class="faq">
+        <strong>Can my child compete in tournaments through this program?</strong>
+        <p>Yes. Coach Baagii will identify tournament opportunities appropriate for each athlete's development stage and let parents know when competition makes sense.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:0;padding-bottom:84px">
+  <div class="wrap">
+    <div class="cta-band">
+      <div>
+        <p class="section-label">Get Started</p>
+        <h2>Claim Your Free Tryout</h2>
+        <p>Email Coach Baagii to reserve a spot in the Youth Club. The first session is free. Bring the athlete and a water bottle — everything else gets handled in the room.</p>
+      </div>
+      <a href="mailto:coach@baagiiwrestling.com?subject=Youth%20Club%20Tryout%20Request" class="btn">Email Coach Baagii</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div class="brand-copy">
+      <strong class="brand-name">Iron Wolf Wrestling Academy</strong>
+      <span>Coach Baagii Boldmaa</span>
+    </div>
+    <div class="fcontact">
+      <span>coach@baagiiwrestling.com</span>
+      <span>(555) 248-1900</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
